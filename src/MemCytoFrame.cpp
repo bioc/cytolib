@@ -23,7 +23,9 @@ namespace cytolib
 		char version[7];
 		in.get(version, 7);
 
-		if(strcmp(version, "FCS2.0")!=0&&strcmp(version, "FCS3.0")!=0&&strcmp(version, "FCS3.1")!=0)
+		if(strcmp(version, "FCS3.2")==0)
+	       PRINT("Warning: FCS3.2 is not officially supported by cytolib\n");
+		else if(strcmp(version, "FCS2.0")!=0&&strcmp(version, "FCS3.0")!=0&&strcmp(version, "FCS3.1")!=0)
 			 throw(domain_error("This does not seem to be a valid FCS2.0, FCS3.0 or FCS3.1 file"));
 
 		header_.FCSversion = boost::lexical_cast<float>(version+3);
